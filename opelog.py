@@ -31,8 +31,7 @@ option = "y"
 while (option == "y")|(option == "s"):
     print(menu)
     for row in v: print(row)
-    operacion = input("dime la operacion ")
-    #operacion = "".join(("respuesta = ",operacion))         ##Nuestro plan es hacer que se corra un codigo al final, por lo que nombramos la variable respuesta
+    operacion = input("dime la operacion ")         ##Nuestro plan es hacer que se corra un codigo al final, por lo que nombramos la variable respuesta
                                                             ## y usamos el input para correr el programa. 
     lista = [eval(operacion) for r in v]                     ## y hacemos una lista con todos los resultados de la operacion.
 
