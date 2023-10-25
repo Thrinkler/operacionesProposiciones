@@ -32,12 +32,9 @@ while (option == "y")|(option == "s"):
     print(menu)
     for row in v: print(row)
     operacion = input("dime la operacion ")
-    operacion = "".join(("respuesta = ",operacion))         ##Nuestro plan es hacer que se corra un codigo al final, por lo que nombramos la variable respuesta
+    #operacion = "".join(("respuesta = ",operacion))         ##Nuestro plan es hacer que se corra un codigo al final, por lo que nombramos la variable respuesta
                                                             ## y usamos el input para correr el programa. 
-    lista = []
-    for r in v:
-        exec(operacion)                             ## corremos la operacion
-        lista.append(respuesta)                     ## y hacemos una lista con todos los resultados de la operacion.
+    lista = [eval(operacion) for r in v]                     ## y hacemos una lista con todos los resultados de la operacion.
 
     if all(i== lista[0] for i in lista):            ## comparamos si todos los valores son iguales en la lista
         if lista[0] == True:
