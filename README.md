@@ -1,2 +1,6 @@
-Este es mi primer programa subido a github de manera publica.
-Espero que si lo ven, que les pueda servir. Es un programa muy sencillo para facilitar hacer tablas de verdad.
+Logical propositions
+
+This simple program helps you create a table of values for the propositions given by you in the input, telling you some things about them.
+
+
+This is my first GitHub project published, I hope it helps you
