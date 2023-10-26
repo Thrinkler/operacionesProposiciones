@@ -27,34 +27,35 @@ menu = """
 favor de notar las variables como r[]
 ejemplo: (not r[0]) or (r[1])
 """
-option = "y"
-while (option == "y")|(option == "s"):
+while True:
     print(menu)
-    for row in linicial: print(row)
-    operacion = input("dime la operacion ")         ##Nuestro plan es hacer que se corra un codigo al final, por lo que nombramos la variable respuesta
-                                                            ## y usamos el input para correr el programa. 
-    lista = [eval(operacion) for r in linicial]                     ## y hacemos una lista con todos los resultados de la operacion.
+    for row in linicial: print(row)                     ## imprimimos la lista con la que trabajaremos
+    
+    operacion = input("dime la operacion ")         
+    lista = [int(eval(operacion)) for r in linicial]    ## Con la operacion dada, hacemos la operacion con la lista inicial
 
-    if all(i== lista[0] for i in lista):            ## comparamos si todos los valores son iguales en la lista
-        if lista[0] == True:
-            print("Es tautologica\n")               ## si son todos verdaderos, se llama tautologia
+    if lista[0] in (0,1):
+        if all(i== lista[0] for i in lista):            ## comparamos si todos los valores son iguales en la lista
+            if lista[0] == True:
+                print("Es tautologica\n")               ## si son todos verdaderos, se llama tautologia
+            else:
+                print("Es contradictoria \n")           ## si son todos falsos, se llama contradiccion
         else:
-            print("Es contradictoria \n")           ## si son todos falsos, se llama contradiccion
+            print("Es una contingencia\n")              ## si los valores no son todos iguales, se llama contingente.
+
+        for f in range(len(linicial[0])):
+            print(f)
+            if all(linicial[n][f]==i for n,i in enumerate(lista)):             ## Comparamos nuestra nueva lista con los valores pasados y vemos si se parecen.
+                print("esta expresion es logicamente equivalente a la fila "+str(f+1))
+
+        for n,valores in enumerate(linicial):
+            valores.append(lista[n])                          ## Finalmente almacenamos la lista en nuestra primera lista para hacer mas trabajos con ella
+
     else:
-        print("Es una contingencia\n")              ## si los valores no son todos iguales, se llama contingente.
-
-    for f in range(len(linicial[0])):
-        print(f)
-        if all(linicial[n][f]==i for n,i in enumerate(lista)):             ## Comparamos nuestra nueva lista con los valores pasados y vemos si se parecen.
-            print("esta expresion es igual a la lista "+str(f+1))
-
-    for n,valores in enumerate(linicial):
-        valores.append(lista[n])                          ## Finalmente almacenamos la lista en nuestra primera lista para hacer mas trabajos con ella
-
-
+        print("no pusiste un valor valido")                   ## failsave
     for row in linicial: print(row)
-    option = input("\nQuieres hacer una segunda operacion\nusando la lista anterior y los conjuntos? Y/N\n").lower()  ## si pone y,Y,s o S, repetimos el codigo.
-
+    option = input("\nQuieres hacer una segunda operacion\nusando la lista anterior y los conjuntos? Y/N\n")  ## si pone y,Y,s o S, repetimos el codigo.
+    if( option.lower() not in ("y", "s") ): break
 
 
 
